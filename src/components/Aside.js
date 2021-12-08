@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 
 
 export function Aside() {
@@ -23,20 +23,21 @@ export function Aside() {
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             
-            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="#">
                 <div className="sidebar-brand-icon rotate-n-0">
                     <i className="fas fa-truck-moving"></i>
                 </div>
                 <div className="sidebar-brand-text mx-3">PBOX </div>
-            </a>
+            </Link>
 
             
             <hr className="sidebar-divider my-0" />
 
                 <li className="nav-item active">
-                    <a className="nav-link" href="index.html" onClick={(e) => this.actualizarContenido('Dashboard', e)} >
+                    <Link className="nav-link" to="/" onClick={(e) => this.actualizarContenido('Dashboard', e)} >
                         <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
+                        <span>Dashboard</span>
+                    </Link>
                 </li>
 
                 
@@ -56,9 +57,9 @@ export function Aside() {
                         <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div className="bg-white py-2 collapse-inner rounded">
                                 <h6 className="collapse-header">Custom Components:</h6>
-                                <a className="collapse-item" href="buttons.html">Asignar recogidas</a>
-                                <a className="collapse-item" href="cards.html">Programar Recogida</a>
-                                <a className="collapse-item" href="cards.html">Confirmar Recogida</a>
+                                <Link className="collapse-item" to="/asigRecogida">Asignar Recogida </Link>
+                                <Link className="collapse-item" to="/progRecogida">Programar Recogida </Link>
+                                <Link className="collapse-item" to="/confRecogida">Confirmar Recogida </Link>
                             </div>
                         </div>
                     </li>
@@ -74,8 +75,8 @@ export function Aside() {
                             data-parent="#accordionSidebar">
                             <div className="bg-white py-2 collapse-inner rounded">
                                 <h6 className="collapse-header">Custom Utilities:</h6>
-                                <a className="collapse-item" href="utilities-color.html">Listar Envíos</a>
-                                <a className="collapse-item" href="utilities-border.html">Seguir envío</a>
+                                <Link className="collapse-item" to="/listarEnvios">Listar Envíos</Link>
+                                <Link className="collapse-item" to="/seguirEnvio">Seguir envío</Link>
                                 <a className="collapse-item" href="utilities-animation.html">Modificar Envío</a>
                                 
                             </div>
