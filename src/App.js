@@ -10,7 +10,7 @@ import ConfirmarRecogida from './components/ConfirmarRecogida';
 import AsignarRecogidas from './components/AsignarRecogidas';
 import ListarEnvios from './components/ListarEnvios';
 import SeguirEnvio from './components/SeguirEnvio';
-
+import GestionUsuarios from './components/GestionUsuarios';
 function App() {
   return (
 
@@ -23,7 +23,7 @@ function App() {
         <Nav />
         <div className="container-fluid">
           <Routes>
-              <Route path="/" exact element= { < Dashboard /> } />
+              <Route path="/gestionUsuarios" exact element= { < GestionUsuarios /> } />
               <Route path="/progRecogida" exact element= { < ProgRecogida /> } />
               <Route path="/confRecogida" exact element= { < ConfirmarRecogida /> } />
               <Route path="/asigRecogida" exact element= { < AsignarRecogidas /> } />

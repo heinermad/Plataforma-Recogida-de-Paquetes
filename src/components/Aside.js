@@ -31,14 +31,14 @@ export function Aside() {
             </Link>
 
             
-            <hr className="sidebar-divider my-0" />
+           {/*  <hr className="sidebar-divider my-0" />
 
                 <li className="nav-item active">
                     <Link className="nav-link" to="/" onClick={(e) => this.actualizarContenido('Dashboard', e)} >
                         <i className="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </Link>
-                </li>
+                </li> */}
 
                 
                 <hr className="sidebar-divider"/>
@@ -101,7 +101,7 @@ export function Aside() {
                             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Login Screens:</h6>
-                                    <a className="collapse-item" href="login.html">Gestionar Usuario</a>
+                                    <Link className="collapse-item" to="gestionUsuarios">Gestion de Usuarios</Link>
                                     <a className="collapse-item" href="register.html">Crear Usuario</a>
                                    
                                     <div className="collapse-divider"></div>
@@ -122,8 +122,8 @@ export function Aside() {
                         
                         <li className="nav-item">
                             <a className="nav-link" href="none"   >
-                                <i className="fas fa-fw fa-table"></i>
-                                <span onClick={clickMe(valor)} >Tables</span></a>
+                                {/* <i className="fas fa-fw fa-table"></i> */}
+                                <span onClick={clickMe(valor)} ></span></a>
                         </li>
 
                         
