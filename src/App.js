@@ -7,10 +7,14 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import ProgRecogida from './components/ProgRecogida';
 import ConfirmarRecogida from './components/ConfirmarRecogida';
+import CrearUsuario from './components/CrearUsuario';
+import EditarUsuario from './components/EditarUsuario';
+import EditaUsuario from './components/EditaUsuario';
 import AsignarRecogidas from './components/AsignarRecogidas';
 import ListarEnvios from './components/ListarEnvios';
 import SeguirEnvio from './components/SeguirEnvio';
 import GestionUsuarios from './components/GestionUsuarios';
+import EditUser from './components/EditUser';
 function App() {
   return (
 
@@ -29,6 +33,8 @@ function App() {
               <Route path="/asigRecogida" exact element= { < AsignarRecogidas /> } />
               <Route path="/listarEnvios" exact element= { < ListarEnvios /> } />
               <Route path="/seguirEnvio" exact element= { < SeguirEnvio /> } />
+              <Route path="/crear" exact element= { < CrearUsuario /> } />
+              <Route path="/editar/:id" exact element= { < EditarUsuario /> } />
 
            </Routes > 
         </div>
