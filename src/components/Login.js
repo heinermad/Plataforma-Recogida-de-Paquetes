@@ -1,6 +1,31 @@
 import React from "react";
+import {useState, useContext} from 'react';
+import axios from 'axios';
 
 export function Login() {
+
+  const [usuario, setUsuario] = useState('')
+  const [password, setPassword] = useState('')
+  const [loginError,setLoginError] = useState(false);
+
+
+  function loginUser(e) {
+    e.preventDefault();
+
+    axios.get('http://localhost:4000/logins/' + usuario  + '/' +  password)
+    .then(response => {
+      setLoginError(response.data);
+      
+
+    })
+    
+    console.log('LOs datos on loginError dentro de login User: ',loginError);
+    
+        
+    
+      
+  }
+  console.log('LOs datos con loginError más afuera: ',loginError);
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -14,7 +39,7 @@ export function Login() {
                     <div className="text-center">
                       <h1 className="h4 text-gray-900 mb-4">Iniciar sesión</h1>
                     </div>
-                    <form className="user">
+                    <form className="user" action="" onSubmit={e => loginUser(e)}>
                       <div className="form-group">
                         <input
                           type="text"
@@ -22,6 +47,8 @@ export function Login() {
                           id="usuario"
                           aria-describedby="usuario"
                           placeholder="Nombre de usuario aquí..."
+                          value={usuario} 
+                          onChange={e => setUsuario(e.target.value)}
                         />
                       </div>
                       <div className="form-group">
@@ -30,14 +57,16 @@ export function Login() {
                           className="form-control form-control-user"
                           id="clave"
                           placeholder="Ahora la contraseña"
+                          value={password} 
+                          onChange={e => setPassword(e.target.value)}
                         />
                       </div>
-                      <a
-                        href="index.html"
+                      <button
+                        type="submit"
                         className="btn btn-primary btn-user btn-block"
                       >
                         Ingresar
-                      </a>
+                      </button>
                     </form>
                     <hr />
                     <div className="text-center">
