@@ -56,10 +56,9 @@ export function Aside() {
                         </a>
                         <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div className="bg-white py-2 collapse-inner rounded">
-                                <h6 className="collapse-header">Custom Components:</h6>
-                                <Link className="collapse-item" to="/asigRecogida">Asignar Recogida </Link>
-                                <Link className="collapse-item" to="/progRecogida">Programar Recogida </Link>
-                                <Link className="collapse-item" to="/confRecogida">Confirmar Recogida </Link>
+                                <Link className="collapse-item" to="/recogida/asigRecogida">Asignar Recogida </Link>
+                                <Link className="collapse-item" to="/recogida/progRecogida">Programar Recogida </Link>
+                                <Link className="collapse-item" to="/recogida/confRecogida">Confirmar Recogida </Link>
                             </div>
                         </div>
                     </li>
@@ -74,10 +73,8 @@ export function Aside() {
                         <div id="collapseUtilities" className="collapse" aria-labelledby="headingUtilities"
                             data-parent="#accordionSidebar">
                             <div className="bg-white py-2 collapse-inner rounded">
-                                <h6 className="collapse-header">Custom Utilities:</h6>
-                                <Link className="collapse-item" to="/listarEnvios">Listar Envíos</Link>
+                                <Link className="collapse-item" to="envio/listarEnvios">Listar Envíos</Link>
                                 <Link className="collapse-item" to="/seguirEnvio">Seguir envío</Link>
-                                <a className="collapse-item" href="utilities-animation.html">Modificar Envío</a>
                                 
                             </div>
                         </div>
@@ -100,14 +97,10 @@ export function Aside() {
                             </a>
                             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
-                                    <h6 className="collapse-header">Login Screens:</h6>
-                                    <Link className="collapse-item" to="gestionUsuarios">Gestion de Usuarios</Link>
-                                    <a className="collapse-item" href="register.html">Crear Usuario</a>
+                                    <Link className="collapse-item" to="usuario">Gestion de Usuarios</Link>
+                                    <Link className="collapse-item" to="crear">Crear Usuario</Link>
                                    
-                                    <div className="collapse-divider"></div>
-                                    <h6 className="collapse-header">Other Pages:</h6>
-                                    <a className="collapse-item" href="404.html">404 Page</a>
-                                    <a className="collapse-item" href="blank.html">Blank Page</a>
+                                    
                                 </div>
                             </div>
                         </li>

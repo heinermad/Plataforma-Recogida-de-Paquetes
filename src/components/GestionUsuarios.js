@@ -64,10 +64,10 @@ export function GestionUsuarios() {
             <div className="d-flex align-content-between flex-wrap p-2">
             
                                     <button type="submit" className="btn btn-success mr-2 "><i className="fas fa-eye">Ver</i></button>
-                                    <Link to={"/editar/" + item.numDoc} className="btn btn-primary mr-2">
+                                    <Link to={"editar"} className="btn btn-primary mr-2">
                                         <i className="fas fa-pencil-alt">
                                             Editar</i>
-                                    </Link>
+                                    </Link> 
                                     {/* <button type="submit" to={"/edit/" + item.numDoc} className="btn btn-primary mr-2"><i class="fas fa-pencil-alt">Editar</i></button> */}
                              <button type="submit" className="btn btn-danger "><i className="fas fa-trash-alt">Eliminar</i></button>
                          </div>
@@ -136,11 +136,7 @@ export function GestionUsuarios() {
                 />
 
             </div>
-            <article>
-          <Outlet/>
-
-          
-        </article>
+            
         </div>
     );
     }

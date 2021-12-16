@@ -5,8 +5,8 @@ import { render } from "@testing-library/react";
 import { useParams } from "react-router-dom";
 
 export function EditarUsuario() {
-  const initialState = {
-    numDoc:"",
+  /* const initialState = {
+    numDoc: "",
     nombre: "",
     apellidos: "",
     direccion: "",
@@ -21,27 +21,22 @@ export function EditarUsuario() {
   const [datos, setDatos] = useState(initialState);
 
   useEffect(() => {
-      
-   
-
     editar();
   }, [id]);
 
   async function editar() {
-    const res = await fetch("http://localhost:4000/users/"+id);
+    const res = await fetch("http://localhost:4000/users/" + id);
     const data = res.json();
     console.log("Adentro ", id);
     console.log("Adentro ", data);
     setDatos(data);
     console.log("Datos del state ", datos);
-    }
+  } */
 
   return (
     <div>
-
-      <div> Hola {id}</div>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 mb-0 text-gray-800">Crear usuario</h1>
+        <h1 className="h3 mb-0 text-gray-800">Editar usuario</h1>
       </div>
 
       <div className="card border-left-primary shadow h-100 py-2">
@@ -59,7 +54,7 @@ export function EditarUsuario() {
                       type="text"
                       name="nombre"
                       id="nombre"
-                      value={datos.nombre}
+                      /* value={datos.nombre} */
                       className="form-control"
                     />
                   </div>
@@ -71,7 +66,6 @@ export function EditarUsuario() {
                       type="text"
                       name="apellidos"
                       id="apellidos"
-                      value={datos.apellidos}
                       className="form-control"
                     />
                   </div>
@@ -83,7 +77,6 @@ export function EditarUsuario() {
                       type="text"
                       name="direccion"
                       id="direccion"
-                      value={datos.direccion}
                       className="form-control"
                     />
                   </div>
@@ -96,7 +89,6 @@ export function EditarUsuario() {
                       type="text"
                       name="fecha_nac"
                       id="fecha_nac"
-                      value={datos.fecha_nac}
                       className="form-control"
                     />
                   </div>
@@ -108,7 +100,6 @@ export function EditarUsuario() {
                       type="number"
                       name="numDoc"
                       id="numDoc"
-                      value={datos.numDoc}
                       className="form-control"
                     />
                     <div className="invalid-feedback">Error</div>
@@ -121,7 +112,6 @@ export function EditarUsuario() {
                       type="email"
                       name="email"
                       id="email"
-                      value={datos.email}
                       className="form-control"
                     />
                   </div>
@@ -133,7 +123,6 @@ export function EditarUsuario() {
                       type="text"
                       name="usuario"
                       id="usuario"
-                      value={datos.usuario}
                       className="form-control"
                     />
                   </div>
@@ -145,7 +134,6 @@ export function EditarUsuario() {
                       type="password"
                       name="clave"
                       id="clave"
-                      value={datos.clave}
                       className="form-control"
                     />
                   </div>
@@ -157,7 +145,6 @@ export function EditarUsuario() {
                       type="text"
                       name="genero"
                       id="genero"
-                      value={datos.genero}
                       className="form-control"
                     />
                   </div>
@@ -169,7 +156,6 @@ export function EditarUsuario() {
                       type="text"
                       name="rol"
                       id="rol"
-                      value={datos.rol}
                       className="form-control"
                     />
                   </div>
