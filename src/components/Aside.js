@@ -31,7 +31,7 @@ export function Aside() {
             </Link>
 
             
-           {/*  <hr className="sidebar-divider my-0" />
+          {/*   <hr className="sidebar-divider my-0" />
 
                 <li className="nav-item active">
                     <Link className="nav-link" to="/" onClick={(e) => this.actualizarContenido('Dashboard', e)} >
@@ -56,9 +56,10 @@ export function Aside() {
                         </a>
                         <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div className="bg-white py-2 collapse-inner rounded">
-                                <Link className="collapse-item" to="/recogida/asigRecogida">Asignar Recogida </Link>
-                                <Link className="collapse-item" to="/recogida/progRecogida">Programar Recogida </Link>
-                                <Link className="collapse-item" to="/recogida/confRecogida">Confirmar Recogida </Link>
+                                <h6 className="collapse-header">Custom Components:</h6>
+                                <Link className="collapse-item" to="/asigRecogida">Asignar Recogida </Link>
+                                <Link className="collapse-item" to="/progRecogida">Programar Recogida </Link>
+                                <Link className="collapse-item" to="/confRecogida">Confirmar Recogida </Link>
                             </div>
                         </div>
                     </li>
@@ -73,8 +74,10 @@ export function Aside() {
                         <div id="collapseUtilities" className="collapse" aria-labelledby="headingUtilities"
                             data-parent="#accordionSidebar">
                             <div className="bg-white py-2 collapse-inner rounded">
-                                <Link className="collapse-item" to="envio/listarEnvios">Listar Envíos</Link>
+                                <h6 className="collapse-header">Custom Utilities:</h6>
+                                <Link className="collapse-item" to="/listarEnvios">Listar Envíos</Link>
                                 <Link className="collapse-item" to="/seguirEnvio">Seguir envío</Link>
+                              
                                 
                             </div>
                         </div>
@@ -97,10 +100,11 @@ export function Aside() {
                             </a>
                             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
+                                    <h6 className="collapse-header">Login Screens:</h6>
                                     <Link className="collapse-item" to="usuario">Gestion de Usuarios</Link>
-                                    <Link className="collapse-item" to="crear">Crear Usuario</Link>
+                                    <Link className="collapse-item" to="usuario/crear">Crear Usuario</Link>
                                    
-                                    
+                                   
                                 </div>
                             </div>
                         </li>
@@ -113,11 +117,11 @@ export function Aside() {
                         </li>
 
                         
-                        <li className="nav-item">
+                       {/*  <li className="nav-item">
                             <a className="nav-link" href="none"   >
-                                {/* <i className="fas fa-fw fa-table"></i> */}
-                                <span onClick={clickMe(valor)} ></span></a>
-                        </li>
+                                <i className="fas fa-fw fa-table"></i>
+                                <span onClick={clickMe(valor)} >Tables</span></a>
+                        </li> */}
 
                         
                         <hr className="sidebar-divider d-none d-md-block" />

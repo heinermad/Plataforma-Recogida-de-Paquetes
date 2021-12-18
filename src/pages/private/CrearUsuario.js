@@ -18,6 +18,10 @@ function CrearUsuario() {
   };
   const [data, setData] = useState(initialState);
 
+  const onCancelar = async (e) => {
+    setData(initialState);
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const newUser = {
@@ -39,7 +43,7 @@ function CrearUsuario() {
         console.log(res.data);
         if (res.data === "Usuario creado") {
           setData(initialState);
-          render(<MyToast exito="si" />);
+          render(<MyToast exito="crear" />);
         } else {
           render(<MyToast exito="no" mensajeError={res.data.message} />);
         }
@@ -55,6 +59,7 @@ function CrearUsuario() {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
+    console.log(newData)
   }
 
   return (
@@ -250,10 +255,8 @@ function CrearUsuario() {
               <button type="submit" className="btn btn-success mr-2 ">
                 Crear
               </button>
-              <button type="submit" className="btn btn-warning mr-2">
-                Limpiar
-              </button>
-              <button type="submit" className="btn btn-danger ">
+              
+              <button onClick={onCancelar} type="submit" className="btn btn-danger ">
                 Cancelar
               </button>
             </div>

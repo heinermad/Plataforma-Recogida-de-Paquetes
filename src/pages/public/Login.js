@@ -1,31 +1,37 @@
-import React from "react";
-import {useState, useContext} from 'react';
+
+import AuthContext from '../../context/AuthContext';
+import React, { useContext,useState } from 'react';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 
 export function Login() {
 
-  const [usuario, setUsuario] = useState('')
-  const [password, setPassword] = useState('')
-  const [loginError,setLoginError] = useState(false);
+  const {handleAuth} = useContext(AuthContext);
+  const [usuario, setUsuario] = useState('');
+  const [password, setPassword] = useState('');
+  
+  const navigate = useNavigate();
 
+  /* const handleNoticias = ()=>{
+      navigate('/');
+  } */
 
   function loginUser(e) {
     e.preventDefault();
 
     axios.get('http://localhost:4000/logins/' + usuario  + '/' +  password)
     .then(response => {
-      setLoginError(response.data);
+      handleAuth(response.data);
       
 
     })
     
-    console.log('LOs datos on loginError dentro de login User: ',loginError);
+   
     
         
     
       
   }
-  console.log('LOs datos con loginError más afuera: ',loginError);
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -39,7 +45,7 @@ export function Login() {
                     <div className="text-center">
                       <h1 className="h4 text-gray-900 mb-4">Iniciar sesión</h1>
                     </div>
-                    <form className="user" action="" onSubmit={e => loginUser(e)}>
+                    <form className="user"  onSubmit={e => loginUser(e)}>
                       <div className="form-group">
                         <input
                           type="text"
@@ -47,7 +53,6 @@ export function Login() {
                           id="usuario"
                           aria-describedby="usuario"
                           placeholder="Nombre de usuario aquí..."
-                          value={usuario} 
                           onChange={e => setUsuario(e.target.value)}
                         />
                       </div>
@@ -57,13 +62,13 @@ export function Login() {
                           className="form-control form-control-user"
                           id="clave"
                           placeholder="Ahora la contraseña"
-                          value={password} 
                           onChange={e => setPassword(e.target.value)}
                         />
                       </div>
                       <button
-                        type="submit"
+                       
                         className="btn btn-primary btn-user btn-block"
+                        
                       >
                         Ingresar
                       </button>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useEffect, useState, Fragment } from 'react';
 import ReactPaginate from "react-paginate";
-import "../App.css";
+import "../../App.css";
 import { Link, Outlet } from 'react-router-dom'
+import { useNavigate } from 'react-router';
 
 export function GestionUsuarios() {
     const [tablaMod, setTablaMod] = useState([]); /* controlar la tabla que se escribe en la barra de busqueda */
@@ -25,6 +26,9 @@ export function GestionUsuarios() {
         setBusqueda(e.target.value);
         filtrar(e.target.value);
     }
+
+    
+
 
     const filtrar = (terminoBusqueda) => {
         var resultadosBusqueda = registros.filter((elemento) => {
@@ -59,18 +63,20 @@ export function GestionUsuarios() {
             <td>{item.nombre}</td>
             <td>{item.apellidos}</td>
             <td>{item.direccion}</td>
+            <td>{item.email}</td>
             
             <td>
             <div className="d-flex align-content-between flex-wrap p-2">
             
-                                    <button type="submit" className="btn btn-success mr-2 "><i className="fas fa-eye">Ver</i></button>
+                                    {/* <button type="submit" className="btn btn-success mr-2 "><i className="fas fa-eye">Ver</i></button>
                                     <Link to={"editar"} className="btn btn-primary mr-2">
                                         <i className="fas fa-pencil-alt">
                                             Editar</i>
-                                    </Link> 
-                                    {/* <button type="submit" to={"/edit/" + item.numDoc} className="btn btn-primary mr-2"><i class="fas fa-pencil-alt">Editar</i></button> */}
-                             <button type="submit" className="btn btn-danger "><i className="fas fa-trash-alt">Eliminar</i></button>
-                         </div>
+                                    </Link>  */}
+                                   <Link type="submit" to={"editar/" + item.nombre +',' + item.apellidos +','+ item.direccion.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ')') +','+item.fecha_nac + ','+ item.numDoc + ',' + item.email + ','+ item.usuario + ',' + item.clave + ',' + item.genero + ','+ item.rol} className="btn btn-primary mr-2"><i className="fas fa-pencil-alt"></i></Link> 
+                                   <Link type="submit" to={"eliminar/" + item.nombre +',' + item.apellidos +','+ item.direccion.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ')') +','+item.fecha_nac + ','+ item.numDoc + ',' + item.email + ','+ item.usuario + ',' + item.clave + ',' + item.genero + ','+ item.rol} className="btn btn-danger mr-2"><i className="fas fa-trash-alt"></i></Link> 
+                            
+            </div>
             </td>
         </tr>
 
@@ -90,7 +96,8 @@ export function GestionUsuarios() {
                 <div className="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 className="h3 mb-0 text-gray-800">Gestion de usuarios</h1>
                 </div>
-                <i className="fas fa-user-plus fa-2x" ></i>
+                
+                <Link  to="crear" className="btn btn-success mr-2"><small><i className="fas fa-user-plus" ></i></small> Crear</Link>
                 <form className=" d-sm-inline-block form-inline   my-md-2 navbar-search float-right">
                     <div className="input-group">
                         <input type="text" className="form-control bg-succes border-1 small" placeholder="Búsqueda"
@@ -102,6 +109,7 @@ export function GestionUsuarios() {
                         </div>
                     </div>
                 </form>
+                
                 <div className=" table-responsive-md">
                     <table className="table table-sm table-bordered table-striped table-light ">
                         <thead>
@@ -110,8 +118,10 @@ export function GestionUsuarios() {
                                 <th >Doc No.</th>
                                 <th >Nombre</th>
                                 <th >Apellidos</th>
-                                <th >Rol</th>
+                                <th >Dirección</th>
+                                <th >E-mail</th>
                                 <th >Acciones</th>
+
                                
 
 
