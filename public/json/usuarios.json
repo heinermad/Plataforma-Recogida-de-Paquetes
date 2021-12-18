@@ -1,0 +1,34 @@
+[
+    {
+       "Doc":"9344456",
+       "Nombre":"Giacomo Guilizzoni",
+       "Rol":"Administrador"
+       
+      
+    },
+    {
+        "Doc":"1052879567",
+        "Nombre":"Marcos Díaz",
+        "Rol":"Mensajero"
+    },
+    {
+        "Doc":"1052869561",
+        "Nombre":"Manolo Arrieta",
+        "Rol":"Mensajero"
+    },
+    {
+        "Doc":"1052769567",
+        "Nombre":"Paola Arrieta",
+        "Rol":"Administrador"
+    },
+    {
+        "Doc":"123456789",
+        "Nombre":"Camilo Perez",
+        "Rol":"Mensajero"
+    },
+    {
+        "Doc":"987654321",
+        "Nombre":"Julian Mejía",
+        "Rol":"Mensajero"
+    }
+ ]

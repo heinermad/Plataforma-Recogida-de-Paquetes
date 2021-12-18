@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+/src/components/EditUser.js
+
+/src/components/EditaUsuario.js
+/src/components/borrar.js

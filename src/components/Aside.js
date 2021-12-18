@@ -31,14 +31,14 @@ export function Aside() {
             </Link>
 
             
-            <hr className="sidebar-divider my-0" />
+          {/*   <hr className="sidebar-divider my-0" />
 
                 <li className="nav-item active">
                     <Link className="nav-link" to="/" onClick={(e) => this.actualizarContenido('Dashboard', e)} >
                         <i className="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </Link>
-                </li>
+                </li> */}
 
                 
                 <hr className="sidebar-divider"/>
@@ -77,7 +77,7 @@ export function Aside() {
                                 <h6 className="collapse-header">Custom Utilities:</h6>
                                 <Link className="collapse-item" to="/listarEnvios">Listar Envíos</Link>
                                 <Link className="collapse-item" to="/seguirEnvio">Seguir envío</Link>
-                                <a className="collapse-item" href="utilities-animation.html">Modificar Envío</a>
+                              
                                 
                             </div>
                         </div>
@@ -101,13 +101,10 @@ export function Aside() {
                             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Login Screens:</h6>
-                                    <a className="collapse-item" href="login.html">Gestionar Usuario</a>
-                                    <a className="collapse-item" href="register.html">Crear Usuario</a>
+                                    <Link className="collapse-item" to="usuario">Gestion de Usuarios</Link>
+                                    <Link className="collapse-item" to="usuario/crear">Crear Usuario</Link>
                                    
-                                    <div className="collapse-divider"></div>
-                                    <h6 className="collapse-header">Other Pages:</h6>
-                                    <a className="collapse-item" href="404.html">404 Page</a>
-                                    <a className="collapse-item" href="blank.html">Blank Page</a>
+                                   
                                 </div>
                             </div>
                         </li>
@@ -120,11 +117,11 @@ export function Aside() {
                         </li>
 
                         
-                        <li className="nav-item">
+                       {/*  <li className="nav-item">
                             <a className="nav-link" href="none"   >
                                 <i className="fas fa-fw fa-table"></i>
                                 <span onClick={clickMe(valor)} >Tables</span></a>
-                        </li>
+                        </li> */}
 
                         
                         <hr className="sidebar-divider d-none d-md-block" />

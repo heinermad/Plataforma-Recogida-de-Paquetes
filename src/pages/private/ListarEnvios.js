@@ -1,10 +1,10 @@
 import React from 'react'
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPaginate from "react-paginate";
-import "../App.css";
+import "../../App.css";
 
 
-export function AsignarRecogidas() {
+export function ListarEnvios() {
   const [tablaMod, setTablaMod] = useState([]); /* controlar la tabla que se escribe en la barra de busqueda */
   const [registros, setRegistros] = useState([]);                                            /*datos de forma estatica y dinamica que se muestran en la tabla*/
   const [busqueda, setBusqueda] = useState("");/*  controlar digitación */
@@ -54,16 +54,19 @@ export function AsignarRecogidas() {
   const displayUsers = tablaMod && tablaMod.slice(pagesVisited, pagesVisited + usersPerPage).map((item) => (
     <tr key={item.codigo}>
       <td>{item.codigo}</td>
-      <td>{item.origen}</td>
-      <td>{item.direccion}</td>
       <td>{item.fecha}</td>
-      <td>{item.hora}</td>
-      <td>{item.detalles}</td>
+      <td>{item.origen}</td>
+      <td>{item.destino}</td>
       <td>
-        <select>
-          <option className="form-select" >Sel. Mensajero </option>
-        </select>
+       {item.estado==='Entregado'?<label >Entregado</label>:<select>
+                                                              <option>Sel. estado</option>
+                                                              <option>Cancelar</option>
+                                                              <option>Recogido</option>
+                                                              <option>Entregado</option>
+                                                           </select>
+           }
       </td>
+      <td> <i class="fas fa-eye"></i> </td>
     </tr>
 
   ));
@@ -78,7 +81,7 @@ export function AsignarRecogidas() {
   return (
     <div >
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 mb-0 text-gray-800">Asignar recogida</h1>
+        <h1 className="h3 mb-0 text-gray-800">Listado Envíos</h1>
       </div>
       <form className=" d-sm-inline-block form-inline   my-md-2 navbar-search float-right">
         <div className="input-group">
@@ -97,12 +100,12 @@ export function AsignarRecogidas() {
             <tr className="bg-primary text-white">
 
               <th >Código</th>
+              <th >Fecha Recogida</th>
               <th >Origen</th>
-              <th >Direccion</th>
-              <th >Fecha</th>
-              <th >Hora</th>
-              <th >Detalles</th>
-              <th>Asignar mensajero</th>
+              <th >Destino</th>
+              <th >Estado</th>
+              <th >Acciones</th>
+              
 
 
             </tr>
@@ -129,4 +132,4 @@ export function AsignarRecogidas() {
   );
 }
 
-export default AsignarRecogidas;
+export default ListarEnvios;
