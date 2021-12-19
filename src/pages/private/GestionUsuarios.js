@@ -56,8 +56,12 @@ export function GestionUsuarios() {
                 setShowLoading(false);
             })
     }, []);
+         
+    
+   
 
     const displayUsers = tablaMod && tablaMod.slice(pagesVisited, pagesVisited + usersPerPage).map((item) => (
+        
         <tr key={item._id}>
             <td>{item.numDoc}</td>
             <td>{item.nombre}</td>
