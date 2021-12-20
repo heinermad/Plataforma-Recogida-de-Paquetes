@@ -7,7 +7,7 @@ function App() {
   const {auth} = useContext(AuthContext);
   return (
     <div >   
-      {auth? <AuthRouter/>: <UnauthRouter/>}
+      {auth.bandera ? <AuthRouter/>: <UnauthRouter/>}
   </div>
   );
 }

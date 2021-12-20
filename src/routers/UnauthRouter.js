@@ -13,7 +13,7 @@ export const UnauthRouter = () => {
               
 
             </Route>
-          <Route  path="*" element={<NotFound/>}/>
+          <Route  path="*" element={<Login/>}/>
                 
     </Routes>
   )
