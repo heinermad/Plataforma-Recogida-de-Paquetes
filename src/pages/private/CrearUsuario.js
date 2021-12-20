@@ -50,7 +50,7 @@ function CrearUsuario() {
       nombre: data.nombre,
       apellidos: data.apellidos,
       direccion: data.direccion,
-      fecha_nac: data.fecha_nac.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3-$2-$1'),
+      fecha_nac: data.fecha_nac,
       email: data.email,
       usuario: data.usuario,
       clave: data.clave,

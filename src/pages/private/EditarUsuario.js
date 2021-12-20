@@ -157,7 +157,7 @@ export function EditarUsuario() {
                   <div className="form-group">
                     <label htmlFor="fecha_nac">Fecha Nac.</label>
                     <input
-                      type="text"
+                      type="Date"
                       name="fecha_nac"
                       id="fecha_nac"
                       className="form-control"
