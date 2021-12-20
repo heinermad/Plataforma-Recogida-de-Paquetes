@@ -21,7 +21,7 @@ export function Login() {
 
     axios.get('http://localhost:4000/logins/' + usuario  + '/' +  password)
     .then(response => {
-      handleAuth(response.data);
+      handleAuth({bandera:response.data.bandera,name:response.data.name});
       
 
     })

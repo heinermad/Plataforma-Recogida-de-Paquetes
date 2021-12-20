@@ -2,9 +2,10 @@ import React , { useContext } from 'react'
 import AuthContext from '../context/AuthContext';
 
 export function Nav() {
-    const {handleAuth} = useContext(AuthContext);
+    const {auth, handleAuth } = useContext(AuthContext);
+
     const handleLogout = ()=>{
-        handleAuth(false);
+        handleAuth({bandera:false, name:''});
     }
 
     return (
@@ -180,7 +181,7 @@ export function Nav() {
                     <li className="nav-item dropdown no-arrow">
                         <a className="nav-link dropdown-toggle" href="none" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{auth.name}</span>
                             <img className="img-profile rounded-circle" alt="..."
                                 src="img/undraw_profile.svg" />
                         </a>
