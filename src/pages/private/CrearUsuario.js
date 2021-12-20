@@ -16,11 +16,32 @@ function CrearUsuario() {
     genero: "",
     rol: "",
   };
+
+  const genero=[{
+    id:1,
+    genero:"Masculino"},
+    {
+      id:2,
+      genero:"Femenino"}
+  ]
+
+  const rol=[{
+    id:1,
+    perfil:"Administador"},
+    {
+      id:2,
+      perfil:"Mensajero"}   
+    
+  ]
+
+
   const [data, setData] = useState(initialState);
+  
 
   const onCancelar = async (e) => {
     setData(initialState);
   }
+  /* console.log(data.fecha_nac.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$1-$2-$3')); */
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -137,7 +158,7 @@ function CrearUsuario() {
                   <div className="form-group">
                     <label htmlFor="fecha_nac">Fecha Nac.</label>
                     <input
-                      type="text"
+                      type="date"
                       name="fecha_nac"
                       id="fecha_nac"
                       value={data.fecha_nac}
@@ -188,6 +209,7 @@ function CrearUsuario() {
                 </div>
                 <div className="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                   <div className="form-group">
+                    
                     <label htmlFor="clave">Contraseña</label>
                     <input
                       type="password"
@@ -199,32 +221,38 @@ function CrearUsuario() {
                     />
                   </div>
                 </div>
-                <div className="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                  <div className="form-group">
-                    <label htmlFor="genero">Género</label>
-                    <input
-                      type="text"
-                      name="genero"
-                      id="genero"
-                      value={data.genero}
-                      onChange={(e) => handle(e)}
-                      className="form-control"
-                    />
+               
+                  <div className="col-lg-6 col-sm-6 col-md-6 col-xs-1">
+                    <div className="form-group">
+                          <label htmlFor="genero">Género</label>
+                        
+                           <select onChange={(e) => handle(e)} id='genero' className="form-control input-lg">
+                              <option  >Seleccione una opción:</option>
+                               {
+                                genero.map((item, i)=>(
+                              <option  key={item.id} value={item.genero}>{item.genero}</option>
+                              ))
+                               }
+                            </select>
+                         
+                    </div>
                   </div>
-                </div>
-                <div className="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                  <div className="form-group">
-                    <label htmlFor="rol">Rol</label>
-                    <input
-                      type="text"
-                      name="rol"
-                      id="rol"
-                      value={data.rol}
-                      onChange={(e) => handle(e)}
-                      className="form-control"
-                    />
+                
+                  <div className="col-lg-6 col-sm-6 col-md-6 col-xs-1">
+                    <div className="form-group">
+                          <label htmlFor="rol">Rol</label>
+                        
+                           <select id='rol' className="form-control input-lg" onChange={(e) => handle(e)}>
+                              <option>Seleccione una opción:</option>
+                               {
+                                rol.map((item, i)=>(
+                              <option key={item.id} value={item.perfil}>{item.perfil}</option>
+                              ))
+                               }
+                            </select>
+                         
+                    </div>
                   </div>
-                </div>
                 {/* <div className="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                     <div className="form-group">
                       <label htmlFor="genero">Género</label>

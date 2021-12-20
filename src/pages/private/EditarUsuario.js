@@ -6,30 +6,52 @@ import { render } from "@testing-library/react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router';
 export function EditarUsuario() {
-   
+  const generoArray=[{
+    id:1,
+    genero:"Masculino"},
+    {
+      id:2,
+      genero:"Femenino"}
+  ]
+  const rol=[{
+    id:1,
+    perfil:"Administador"},
+  {
+    id:2,
+    perfil:"Mensajero"},
+    
+  ]
+
   const navigate = useNavigate();
   const { id } = useParams();
   
   const array=id.split(',');
   
-  const fecha=array[2].replace(')','#');
+  const dir=array[2].replace(')','#');
   const onCancelar = async (e) => {
     navigate('/usuario');
   }
+  
+  /* const resFecha = array[3].split("-");
+  const reversedFecha = resFecha.reverse(); 
+  const FechaOb=reversedFecha.join('-'); */
+  
+
   const initialState = {
     numDoc: array[4],
     nombre: array[0],
     apellidos: array[1],
-    direccion: fecha,
-    fecha_nac: array[3],
+    direccion: dir,
+    fecha_nac: array[3] ,
     email: array[5],
     usuario: array[6],
     clave:  array[7],
-    genero:  array[8],
+    genero: array[8],
     rol:  array[9],
-  };
-  const [data, setData] = useState(initialState);
+  };  
   
+  const [data, setData] = useState(initialState);
+
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -72,6 +94,11 @@ export function EditarUsuario() {
     setData(newData);
     console.log(newData)
   }
+  
+
+  
+ 
+ 
   return (
     <div>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
@@ -130,12 +157,13 @@ export function EditarUsuario() {
                   <div className="form-group">
                     <label htmlFor="fecha_nac">Fecha Nac.</label>
                     <input
-                      type="text"
+                      type="Date"
                       name="fecha_nac"
                       id="fecha_nac"
                       className="form-control"
-                      value={data.fecha_nac}
+                      value={ data.fecha_nac}
                       onChange={(e) => handle(e)}
+                     
                     />
                   </div>
                 </div>
@@ -149,6 +177,7 @@ export function EditarUsuario() {
                       className="form-control"
                       value={data.numDoc}
                       onChange={(e) => handle(e)}
+                      disabled
                     />
                     <div className="invalid-feedback">Error</div>
                   </div>
@@ -192,32 +221,36 @@ export function EditarUsuario() {
                     />
                   </div>
                 </div>
-                <div className="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                  <div className="form-group">
-                    <label htmlFor="genero">Género</label>
-                    <input
-                      type="text"
-                      name="genero"
-                      id="genero"
-                      className="form-control"
-                      value={data.genero}
-                      onChange={(e) => handle(e)}
-                    />
+                <div className="col-lg-6 col-sm-6 col-md-6 col-xs-1">
+                    <div className="form-group">
+                          <label htmlFor="genero">Género</label>
+                        
+                           <select   name="genero" id="genero" onChange={(e) => handle(e)} className="form-control input-lg">
+                              <option value={ data.genero } >{ data.genero }</option>
+                               {
+                                generoArray.filter(item => item.genero !== data.genero)
+                                .map(item=>(
+                                 <option  key={item.id} value={item.genero} >{item.genero}</option>))
+                               }
+                            </select>
+                         
+                    </div>
                   </div>
-                </div>
-                <div className="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                  <div className="form-group">
-                    <label htmlFor="rol">Rol</label>
-                    <input
-                      type="text"
-                      name="rol"
-                      id="rol"
-                      className="form-control"
-                      value={data.rol}
-                      onChange={(e) => handle(e)}
-                    />
+                  <div className="col-lg-6 col-sm-6 col-md-6 col-xs-1">
+                    <div className="form-group">
+                          <label htmlFor="Rol">Rol</label>
+                        
+                           <select id='rol' onChange={(e) =>  handle(e)} className="form-control input-lg">
+                              <option >{data.rol}</option>
+                               {
+                                rol.filter(item=>item.perfil!==data.rol)
+                                .map((item)=>(
+                              <option  key={item.id} value={item.perfil} >{item.perfil}</option>
+                              ))
+                               }
+                            </select>    
+                    </div>
                   </div>
-                </div>
               </div>
             </fieldset>
             <div className="d-flex align-content-between flex-wrap p-2">
