@@ -22,11 +22,11 @@ export function ProgRecogida() {
     estado: "",
     fechaSalida: "",
     fechaEntrega: "",
-    numDocRemit:auth.numDocRemit,
-    nombreRemit:auth.nombreRemit,
-    apellidosRemit: auth.numDocRemit,
+    numDocRemit:"",
+    nombreRemit:"",
+    apellidosRemit: "",
     fechaRecogida: "",
-    direccionRemit: auth.direccionRemit,
+    direccionRemit: "",
     barrioRemit: "",
     ciudadOrigen: "",
     departamentoRemit: "",
@@ -50,7 +50,7 @@ export function ProgRecogida() {
   const [authData, setAuthData] = useState([]);
 
   const onLimpiar = async (e) => {
-    setData(initialState1);
+    setData(initialState);
   };
 
   useEffect(() => {
@@ -63,11 +63,11 @@ export function ProgRecogida() {
       estado: "",
       fechaSalida: "",
       fechaEntrega: "",
-      numDocRemit: auth.numDocRemit,
-      nombreRemit: auth.nombreRemit,
-      apellidosRemit: auth.apellidosRemit,
+      numDocRemit: data.numDocRemit,
+      nombreRemit: data.nombreRemit,
+      apellidosRemit: data.apellidosRemit,
       fechaRecogida: data.fechaRecogida,
-      direccionRemit: auth.direccionRemit,
+      direccionRemit: data.direccionRemit,
       barrioRemit: data.barrioRemit,
       ciudadOrigen: data.ciudadOrigen,
       departamentoRemit: data.departamentoRemit,
@@ -85,18 +85,16 @@ export function ProgRecogida() {
       ciudadDest: data.ciudadDest,
       departamentoDest: data.departamentoDest,
     };
-  console.log('en el submit ', nuevaRecogida);
-
     axios
       .post("http://localhost:4000/envios" , nuevaRecogida)
       .then((res) => {
         console.log(res);
-        console.log("La respuesta: " + res.data);
-        if (res.data === "si") {
-          setData(initialState1);
-          render(<MyToast exito="si" />);
+        console.log(res.data);
+        if (res.data === "Recogida programada con éxito") {
+          setData(initialState);
+          render(<MyToast exito="crear" />);
         } else {
-          render(<MyToast exito="no" mensajeError="No se pudo programar la recogida" />);
+          render(<MyToast exito="no" mensajeError={res.data.message} />);
         }
       })
       .catch((err) => {
@@ -113,8 +111,21 @@ export function ProgRecogida() {
     console.log(newData);
   }
 
- 
-  console.log('EL Initial ', initialState1);
+  function handleAuthData(e) {
+    const estado = {...initialState}
+
+    if(estado[e.target.id] === "numDocRemit"){
+      estado[e.target.id] = e.target.value;
+      setInitialState(estado);
+    }
+    
+   /*  e.preventDefault();
+    const newAuthData = { ...data };
+    newAuthData[e.target.id] = e.target.value;
+    setAuthData(newAuthData);
+    console.log(newAuthData); */
+  } 
+  console.log('EL Initial ', initialState);
 
   return (
     <div>
@@ -136,8 +147,9 @@ export function ProgRecogida() {
                       type="number"
                       name="numDocRemit"
                       id="numDocRemit"
-                      value={auth.numDocRemit}
+                      value={auth.usuario.numDoc}
                       className="form-control"
+                      onLoad={(e) => handleAuthData(e)}
                       disabled
                     />
                   </div>
@@ -150,8 +162,8 @@ export function ProgRecogida() {
                       type="text"
                       name="nombreRemit"
                       id=""
-                      value={auth.nombreRemit}
                       className="form-control"
+                      onChange={(e) => handleAuthData(e)}
                       disabled
                     />
                   </div>
@@ -164,8 +176,8 @@ export function ProgRecogida() {
                       type="text"
                       name="apellidosRemit"
                       id=""
-                      value={auth.apellidosRemit}
                       className="form-control"
+                      onChange={(e) => handleAuthData(e)}
                       disabled
                     />
                   </div>
@@ -178,9 +190,9 @@ export function ProgRecogida() {
                       type="text"
                       name="direccionRemit"
                       id="direccionRemit"
-                      value={auth.direccionRemit}
+                      value={auth.usuario.direccionRemit}
                       className="form-control"
-                      disabled
+                      onChange={(e) => handle(e)}
                     />
                   </div>
                 </div>

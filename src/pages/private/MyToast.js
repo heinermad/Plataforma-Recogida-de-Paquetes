@@ -2,7 +2,7 @@ import { Toaster, toast } from 'react-hot-toast'
 
 
 function MyToast (props) {
-  if(props.exito === "crear")
+  if(props.exito === "si")
     toast.success('Registro guardado.');
   else if(props.exito === "actualizar")
     toast.success('Registro editado.');

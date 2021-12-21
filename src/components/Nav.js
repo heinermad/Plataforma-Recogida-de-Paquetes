@@ -5,7 +5,7 @@ export function Nav() {
     const {auth, handleAuth } = useContext(AuthContext);
 
     const handleLogout = ()=>{
-        handleAuth({bandera:false, name:''});
+        handleAuth({bandera:false, name: ''});
     }
 
     return (
