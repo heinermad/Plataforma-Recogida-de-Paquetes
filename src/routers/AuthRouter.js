@@ -8,6 +8,8 @@ import SeguirEnvio from "../pages/private/SeguirEnvio";
 import GestionUsuarios from "../pages/private/GestionUsuarios";
 import CrearUsuario from "../pages/private/CrearUsuario";
 
+import NotFound from "../pages/public/NotFound";
+
 
 
 import Nav from "../components/Nav";
@@ -32,8 +34,8 @@ export const AuthRouter = () => {
                 <Route path="usuario/editar/:id" element={<EditarUsuario/>} />
                 <Route path="usuario/eliminar/:id" element={<EliminarUsuario/>} />
                 
-                <Route path="usuario/crear" element={<CrearUsuario/>} />
-                <Route path="*" element={<Nav/>}/>
+                <Route path="crear" element={<CrearUsuario/>} />
+                <Route path="*" element={<NotFound/>}/>
              </Route>
          </Routes>
            

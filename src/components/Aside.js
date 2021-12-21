@@ -102,7 +102,7 @@ export function Aside() {
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Login Screens:</h6>
                                     <Link className="collapse-item" to="usuario">Gestion de Usuarios</Link>
-                                    <Link className="collapse-item" to="usuario/crear">Crear Usuario</Link>
+                                    <Link className="collapse-item" to="crear">Crear Usuario</Link>
                                    
                                    
                                 </div>
