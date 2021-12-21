@@ -32,7 +32,7 @@ export const AuthRouter = () => {
                 <Route path="usuario/editar/:id" element={<EditarUsuario/>} />
                 <Route path="usuario/eliminar/:id" element={<EliminarUsuario/>} />
                 
-                <Route path="usuario/crear" element={<CrearUsuario/>} />
+                <Route path="crear" element={<CrearUsuario/>} />
                 <Route path="*" element={<Nav/>}/>
              </Route>
          </Routes>

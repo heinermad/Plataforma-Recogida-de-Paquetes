@@ -113,7 +113,7 @@ export function Aside() {
             <Link className="collapse-item" to="usuario">
               Gestion de Usuarios
             </Link>
-            <Link className="collapse-item" to="usuario/crear">
+            <Link className="collapse-item" to="crear">
               Crear Usuario
             </Link>
           </div>

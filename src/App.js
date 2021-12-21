@@ -5,9 +5,11 @@ import AuthContext from './context/AuthContext';
 
 function App() {
   const {auth} = useContext(AuthContext);
+
+  const alm= JSON.parse(localStorage.getItem("tasks"));
   return (
     <div >   
-      {auth.bandera ? <AuthRouter/>: <UnauthRouter/>}
+      {alm.bandera  ? <AuthRouter/>: <UnauthRouter/>}
   </div>
   );
 }

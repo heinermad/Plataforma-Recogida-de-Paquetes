@@ -12,8 +12,9 @@ const AuthProvider = ({children})=>{
 
     const handleAuth = (band)=>{
         navigate('/');
-        setAuth(band);
-       
+        //setAuth(band);
+        localStorage.setItem("tasks", JSON.stringify(band));
+        setAuth(JSON.parse(localStorage.getItem("tasks")))
     }
     
     const data = {auth, handleAuth};
