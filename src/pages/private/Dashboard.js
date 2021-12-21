@@ -5,6 +5,7 @@ import AuthContext from '../../context/AuthContext';
 import Aside from '../../components/Aside';
 import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
+import Lateral from '../../components/Lateral';
 
 export const Dashboard = () => {
     const {handleAuth} = useContext(AuthContext);
@@ -15,7 +16,7 @@ export const Dashboard = () => {
 
     return (
         <div id="wrapper">
-            <Aside />
+            <Lateral />
             <div id="content-wrapper" className="d-flex flex-column">
             <Nav />
                 <div className="container-fluid">

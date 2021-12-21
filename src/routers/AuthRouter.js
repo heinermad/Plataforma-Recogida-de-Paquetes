@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes,Route } from 'react-router';
+import { Routes,Route,Navigate } from 'react-router';
 import AsignarRecogidas from "../pages/private/AsignarRecogidas";
 import ConfirmarRecogida from "../pages/private/ConfirmarRecogida";
 import ProgRecogida from "../pages/private/ProgRecogida";
@@ -10,7 +10,7 @@ import CrearUsuario from "../pages/private/CrearUsuario";
 
 import NotFound from "../pages/public/NotFound";
 
-
+import { useNavigate } from 'react-router';
 
 import Nav from "../components/Nav";
 import {Dashboard} from "../pages/private/Dashboard";
@@ -19,9 +19,11 @@ import EditarUsuario from '../pages/private/EditarUsuario';
 import EliminarUsuario from '../pages/private/EliminarUsuario';
 
 export const AuthRouter = () => {
+  const alm= JSON.parse(localStorage.getItem("tasks"));
+  const navigate = useNavigate();
   return (
     
-    
+     
         <Routes>
             <Route path="/" element={<Dashboard />}>
                 <Route index element={<Footer />}/>
@@ -30,7 +32,8 @@ export const AuthRouter = () => {
                 <Route path="confRecogida" element={<ConfirmarRecogida/>} />
                 <Route path="listarEnvios" element={<ListarEnvios/>} />
                 <Route path="seguirEnvio" element={<SeguirEnvio/>} />
-                <Route path="usuario" element={<GestionUsuarios/>} />
+               
+                {alm.name==='Wilmer'?<Route path="usuario" element={<GestionUsuarios/>} />:<Route path="*"  element={<Navigate to="/" />} />} 
                 <Route path="usuario/editar/:id" element={<EditarUsuario/>} />
                 <Route path="usuario/eliminar/:id" element={<EliminarUsuario/>} />
                 

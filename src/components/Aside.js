@@ -13,7 +13,7 @@ export function Aside() {
         console.log(contenidoPag);
 
        
-          
+       
         
         
 
@@ -101,6 +101,7 @@ export function Aside() {
                             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                                 <div className="bg-white py-2 collapse-inner rounded">
                                     <h6 className="collapse-header">Login Screens:</h6>
+
                                     <Link className="collapse-item" to="usuario">Gestion de Usuarios</Link>
                                     <Link className="collapse-item" to="crear">Crear Usuario</Link>
                                    
