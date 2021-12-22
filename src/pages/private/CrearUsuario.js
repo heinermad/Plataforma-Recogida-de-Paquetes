@@ -171,7 +171,7 @@ function CrearUsuario() {
                       onChange={(e) => handle(e)}
                       className="form-control"
                     />
-                    <div class="invalid-feedback">Error</div>
+                    <div className="invalid-feedback">Error</div>
                   </div>
                 </div>
 
