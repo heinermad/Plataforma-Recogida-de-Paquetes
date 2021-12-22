@@ -22,7 +22,7 @@ export const AuthRouter = () => {
     
         <Routes>
             <Route path="/" element={<Dashboard />}>
-                <Route index element={<Footer />}/>
+                <Route index element={<ProgRecogida />}/>
                 <Route path="asigRecogida" element={<AsignarRecogidas/>} />
                 <Route path="progRecogida" element={<ProgRecogida/>} />
                 <Route path="confRecogida" element={<ConfirmarRecogida/>} />

@@ -56,7 +56,7 @@ export function GestionUsuarios() {
 
   useEffect(() => {
     setShowLoading(true);
-    fetch("http://localhost:4000/usuarios")
+    fetch("https://plataforma-recogida-de-paquete.herokuapp.com/usuarios")
       .then((response) => response.json())
       .then((datos) => {
         setTablaMod(datos);

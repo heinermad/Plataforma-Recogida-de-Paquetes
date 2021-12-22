@@ -86,7 +86,7 @@ export function ProgRecogida() {
       departamentoDest: data.departamentoDest,
     };
     axios
-      .post("http://localhost:4000/envios" , nuevaRecogida)
+      .post("https://plataforma-recogida-de-paquete.herokuapp.com/envios" , nuevaRecogida)
       .then((res) => {
         console.log(res);
         console.log(res.data);

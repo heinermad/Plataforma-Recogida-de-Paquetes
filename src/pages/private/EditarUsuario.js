@@ -68,7 +68,7 @@ export function EditarUsuario() {
       rol: data.rol,
     };
     axios
-      .put("http://localhost:4000/usuarios/" + data.numDoc, newUser)
+      .put("https://plataforma-recogida-de-paquete.herokuapp.com/usuarios/" + data.numDoc, newUser)
       .then((res) => {
         console.log(res);
         console.log(res.data);

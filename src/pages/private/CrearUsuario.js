@@ -61,7 +61,7 @@ function CrearUsuario() {
       rol: data.rol,
     };
     axios
-      .post("http://localhost:4000/usuarios", newUser)
+      .post("https://plataforma-recogida-de-paquete.herokuapp.com/usuarios", newUser)
       .then((res) => {
         console.log(res);
         console.log(res.data);

@@ -18,7 +18,7 @@ export function Login() {
     e.preventDefault();
 
     axios
-      .get("http://localhost:4000/usuarios/logueo/" + usuario + "/" + password)
+      .get("https://plataforma-recogida-de-paquete.herokuapp.com/usuarios/logueo/" + usuario + "/" + password)
       .then((response) => {
         handleAuth({
           bandera: response.data.bandera,

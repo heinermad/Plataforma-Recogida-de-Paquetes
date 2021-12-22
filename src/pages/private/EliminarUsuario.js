@@ -45,7 +45,7 @@ export function EliminarUsuario() {
       rol: data.rol,
     };
     axios
-      .delete("http://localhost:4000/usuarios/" + data.numDoc)
+      .delete("https://plataforma-recogida-de-paquete.herokuapp.com/usuarios/" + data.numDoc)
       .then((res) => {
         console.log(res);
         console.log(res.data);
