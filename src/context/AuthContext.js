@@ -12,6 +12,7 @@ const AuthProvider = ({children})=>{
 
     const handleAuth = (band)=>{
         navigate('/');
+        window.location.reload();
         //setAuth(band);
         localStorage.setItem("tasks", JSON.stringify(band));
         setAuth(JSON.parse(localStorage.getItem("tasks")))
