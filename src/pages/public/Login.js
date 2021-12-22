@@ -22,11 +22,11 @@ export function Login() {
       .then((response) => {
         handleAuth({
           bandera: response.data.bandera,
-          name: response.data.usuario.usuario,
+          /* name: response.data.usuario.usuario,
           numDocRemit: response.data.usuario.numDoc,
           nombreRemit: response.data.usuario.nombre,
           apellidosRemit: response.data.usuario.apellidos,
-          direccionRemit: response.data.usuario.direccion
+          direccionRemit: response.data.usuario.direccion */
         });
       });
   }
