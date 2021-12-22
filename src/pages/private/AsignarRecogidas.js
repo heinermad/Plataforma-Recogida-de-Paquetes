@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPaginate from "react-paginate";
 import "../../App.css";
 

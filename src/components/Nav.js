@@ -1,8 +1,9 @@
+   
 import React , { useContext } from 'react'
 import AuthContext from '../context/AuthContext';
 
 export function Nav() {
-    const {auth, handleAuth } = useContext(AuthContext);
+    const {handleAuth } = useContext(AuthContext);
     const alm= JSON.parse(localStorage.getItem("tasks"));
     const handleLogout = ()=>{
         handleAuth({bandera:false, name: '', numDocRemit: '',nombreRemit:'', apellidosRemit:'',direccionRemit:''});
@@ -190,20 +191,20 @@ export function Nav() {
                             aria-labelledby="userDropdown">
                             <a className="dropdown-item" href="none">
                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
+                                Perfil
                             </a>
                             <a className="dropdown-item" href="none">
                                 <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
+                                Ajustes
                             </a>
                             <a className="dropdown-item" href="none">
                                 <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Activity Log
+                                Actividad
                             </a>
                             <div className="dropdown-divider"></div>
                             <a className="dropdown-item" href="none" data-toggle="modal" data-target="#logoutModal"  onClick={handleLogout}>
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
+                                Salir
                             </a>
                         </div>
                     </li>

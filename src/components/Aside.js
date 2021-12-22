@@ -2,13 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export function Aside() {
-  let valor = "otro";
-  const clickMe = (parameter) => (event) => {
-    let contenidoPag = parameter;
-    alert("A name was submitted: " + contenidoPag);
-    event.preventDefault();
-    console.log(contenidoPag);
-  };
+  
 
   return (
     <ul
@@ -118,13 +112,6 @@ export function Aside() {
             </Link>
           </div>
         </div>
-      </li>
-
-      <li className="nav-item">
-        <a className="nav-link" href="charts.html">
-          <i className="fas fa-fw fa-file-download"></i>
-          <span>Reportes</span>
-        </a>
       </li>
 
       <hr className="sidebar-divider d-none d-md-block" />

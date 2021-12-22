@@ -10,30 +10,29 @@ import CrearUsuario from "../pages/private/CrearUsuario";
 
 
 
-import Nav from "../components/Nav";
 import {Dashboard} from "../pages/private/Dashboard";
-import Footer from "../components/Footer";
 import EditarUsuario from '../pages/private/EditarUsuario';
 import EliminarUsuario from '../pages/private/EliminarUsuario';
+import NotFound from '../pages/public/NotFound';
 
 export const AuthRouter = () => {
   return (
     
     
         <Routes>
-            <Route path="/" element={<Dashboard />}>
-                <Route index element={<ProgRecogida />}/>
-                <Route path="asigRecogida" element={<AsignarRecogidas/>} />
-                <Route path="progRecogida" element={<ProgRecogida/>} />
-                <Route path="confRecogida" element={<ConfirmarRecogida/>} />
-                <Route path="listarEnvios" element={<ListarEnvios/>} />
-                <Route path="seguirEnvio" element={<SeguirEnvio/>} />
-                <Route path="usuario" element={<GestionUsuarios/>} />
-                <Route path="usuario/editar/:id" element={<EditarUsuario/>} />
-                <Route path="usuario/eliminar/:id" element={<EliminarUsuario/>} />
+            <Route path="/" exact element={<Dashboard />}>
+                <Route index exact element={<ProgRecogida />}/>
+                <Route path="asigRecogida" exact element={<AsignarRecogidas/>} />
+                <Route path="progRecogida" exact element={<ProgRecogida/>} />
+                <Route path="confRecogida" exact element={<ConfirmarRecogida/>} />
+                <Route path="listarEnvios" exact element={<ListarEnvios/>} />
+                <Route path="seguirEnvio" exact element={<SeguirEnvio/>} />
+                <Route path="usuario" exact element={<GestionUsuarios/>} />
+                <Route path="usuario/editar/:id" exact element={<EditarUsuario/>} />
+                <Route path="usuario/eliminar/:id" exact element={<EliminarUsuario/>} />
                 
-                <Route path="crear" element={<CrearUsuario/>} />
-                <Route path="*" element={<Nav/>}/>
+                <Route path="crear" exact element={<CrearUsuario/>} />
+                <Route path="*" element={<NotFound/>}/>
              </Route>
          </Routes>
            
