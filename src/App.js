@@ -10,7 +10,7 @@ function App() {
   console.log('var storage', alm)
   return (
     <div >   
-      { alm.bandera  ? <AuthRouter/>: <UnauthRouter/> }
+      { auth.bandera  ? <AuthRouter/>: <UnauthRouter/> }
   </div>
   );
 }
