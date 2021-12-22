@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import axios from "axios";
 import MyToast from "./MyToast";
 import { render } from "@testing-library/react";
@@ -32,30 +32,17 @@ export function EliminarUsuario() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const newUser = {
-      numDoc: data.numDoc,
-      nombre: data.nombre,
-      apellidos: data.apellidos,
-      direccion: data.direccion,
-      fecha_nac: data.fecha_nac,
-      email: data.email,
-      usuario: data.usuario,
-      clave: data.clave,
-      genero: data.genero,
-      rol: data.rol,
-    };
+    
     axios
       .delete("https://plataforma-recogida-de-paquete.herokuapp.com/usuarios/" + data.numDoc)
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
         if (res.data === "Usuario borrado") {
           setData([]);
           render(<MyToast exito="eliminar" />);
 
           navigate("/usuario");
         } else {
-          render(<MyToast exito="no" mensajeError={res.data.message} />);
+          render(<MyToast exito="no" mensajeError="No se pudo programar la recogida" />);
         }
       })
       .catch((err) => {

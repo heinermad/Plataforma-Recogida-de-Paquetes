@@ -1,13 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router'
-import { Link } from 'react-router-dom'
-import AuthContext from '../../context/AuthContext';
 import Aside from '../../components/Aside';
 import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
 
 export const Dashboard = () => {
-    const {handleAuth} = useContext(AuthContext);
 
     /* const handleLogout = ()=>{
         handleAuth(false);

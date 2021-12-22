@@ -1,6 +1,5 @@
 import AuthContext from "../../context/AuthContext";
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router";
 import axios from "axios";
 
 export function Login() {
@@ -8,7 +7,6 @@ export function Login() {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
 
   /* const handleNoticias = ()=>{
       navigate('/');

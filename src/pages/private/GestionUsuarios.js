@@ -1,9 +1,8 @@
 import React from "react";
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "../../App.css";
-import { Link, Outlet } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 export function GestionUsuarios() {
     
@@ -153,10 +152,10 @@ export function GestionUsuarios() {
           <h1 className="h3 mb-0 text-gray-800">Gestion de usuarios</h1>
         </div>
 
-        <Link to="crear" className="btn btn-success mr-2">
+        <Link to="/crear/" className="btn btn-success mr-2">
           <small>
             <i className="fas fa-user-plus"></i>
-          </small>{" "}
+          </small>
           Crear
         </Link>
         

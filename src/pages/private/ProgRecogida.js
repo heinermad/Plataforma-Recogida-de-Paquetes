@@ -1,11 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState,  useEffect } from "react";
 import axios from "axios";
 import MyToast from "./MyToast";
 import { render } from "@testing-library/react";
-import AuthContext from "../../context/AuthContext";
 
 export function ProgRecogida() {
-  const { auth, handleAuth } = useContext(AuthContext);
 
   const recovery= JSON.parse(localStorage.getItem("tasks"));
   const delicado = [
@@ -46,9 +44,7 @@ export function ProgRecogida() {
     departamentoDest: ""
   };
 
-  const [initialState, setInitialState] = useState([]);
   const [data, setData] = useState(initialState1);
-  const [authData, setAuthData] = useState([]);
 
   const onLimpiar = async (e) => {
     setData(initialState1);

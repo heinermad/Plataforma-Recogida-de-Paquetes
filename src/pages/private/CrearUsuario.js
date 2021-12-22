@@ -67,7 +67,7 @@ function CrearUsuario() {
         console.log(res.data);
         if (res.data === "Usuario creado") {
           setData(initialState);
-          render(<MyToast exito="crear" />);
+          render(<MyToast exito="crearUsuario" />);
         } else {
           render(<MyToast exito="no" mensajeError={res.data.errors.usuario.value + '. ' + res.data.message} />);
         }
