@@ -7,6 +7,7 @@ import AuthContext from "../../context/AuthContext";
 export function ProgRecogida() {
   const { auth, handleAuth } = useContext(AuthContext);
 
+  const recovery= JSON.parse(localStorage.getItem("tasks"));
   const delicado = [
     {
       id: 1,
@@ -22,11 +23,11 @@ export function ProgRecogida() {
     estado: "",
     fechaSalida: "",
     fechaEntrega: "",
-    numDocRemit:auth.numDocRemit,
-    nombreRemit:auth.nombreRemit,
-    apellidosRemit: auth.numDocRemit,
+    numDocRemit: recovery.numDocRemit,
+    nombreRemit:recovery.nombreRemit,
+    apellidosRemit: recovery.apellidosRemit,
     fechaRecogida: "",
-    direccionRemit: auth.direccionRemit,
+    direccionRemit: recovery.direccionRemit,
     barrioRemit: "",
     ciudadOrigen: "",
     departamentoRemit: "",
@@ -45,8 +46,8 @@ export function ProgRecogida() {
     departamentoDest: ""
   };
 
-  const [initialState, setInitialState] = useState(initialState1);
-  const [data, setData] = useState([]);
+  const [initialState, setInitialState] = useState([]);
+  const [data, setData] = useState(initialState1);
   const [authData, setAuthData] = useState([]);
 
   const onLimpiar = async (e) => {
@@ -63,11 +64,11 @@ export function ProgRecogida() {
       estado: "",
       fechaSalida: "",
       fechaEntrega: "",
-      numDocRemit: auth.numDocRemit,
-      nombreRemit: auth.nombreRemit,
-      apellidosRemit: auth.apellidosRemit,
+      numDocRemit: data.numDocRemit,
+      nombreRemit: data.nombreRemit,
+      apellidosRemit: data.apellidosRemit,
       fechaRecogida: data.fechaRecogida,
-      direccionRemit: auth.direccionRemit,
+      direccionRemit: recovery.direccionRemit,
       barrioRemit: data.barrioRemit,
       ciudadOrigen: data.ciudadOrigen,
       departamentoRemit: data.departamentoRemit,
@@ -85,7 +86,7 @@ export function ProgRecogida() {
       ciudadDest: data.ciudadDest,
       departamentoDest: data.departamentoDest,
     };
-  console.log('en el submit ', nuevaRecogida);
+  console.log('en el submit ', data);
 
     axios
       .post("https://plataforma-recogida-de-paquete.herokuapp.com/envios" , nuevaRecogida)
@@ -114,7 +115,7 @@ export function ProgRecogida() {
   }
 
  
-  console.log('EL Initial ', initialState1);
+  console.log('EL Initial ', data);
 
   return (
     <div>
@@ -136,7 +137,7 @@ export function ProgRecogida() {
                       type="number"
                       name="numDocRemit"
                       id="numDocRemit"
-                      value={auth.numDocRemit}
+                      value={recovery.numDocRemit}
                       className="form-control"
                       disabled
                     />
@@ -150,7 +151,7 @@ export function ProgRecogida() {
                       type="text"
                       name="nombreRemit"
                       id=""
-                      value={auth.nombreRemit}
+                      value={recovery.nombreRemit}
                       className="form-control"
                       disabled
                     />
@@ -164,7 +165,7 @@ export function ProgRecogida() {
                       type="text"
                       name="apellidosRemit"
                       id=""
-                      value={auth.apellidosRemit}
+                      value={recovery.apellidosRemit}
                       className="form-control"
                       disabled
                     />
@@ -178,7 +179,7 @@ export function ProgRecogida() {
                       type="text"
                       name="direccionRemit"
                       id="direccionRemit"
-                      value={auth.direccionRemit}
+                      value={recovery.direccionRemit}
                       className="form-control"
                       disabled
                     />
