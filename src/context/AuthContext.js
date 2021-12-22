@@ -5,13 +5,14 @@ const AuthContext = createContext();
 
 const AuthProvider = ({children})=>{
     
-    const [auth, setAuth] = useState({bandera:false, name: '', numDocRemit: '',nombreRemit:'', apellidosRemit:'',direccionRemit:''});
+    const [auth, setAuth] = useState({bandera:false});
     const navigate = useNavigate();
 
    
 
     const handleAuth = (band)=>{
         navigate('/');
+        window.location.reload();
         //setAuth(band);
         localStorage.setItem("tasks", JSON.stringify(band));
         setAuth(JSON.parse(localStorage.getItem("tasks")))

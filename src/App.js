@@ -7,10 +7,10 @@ function App() {
   const {auth} = useContext(AuthContext);
 
   const alm= JSON.parse(localStorage.getItem("tasks"));
-  console.log('var storage', alm)
+  /* console.log('var storage', alm) */
   return (
     <div >   
-      { alm.bandera  ? <AuthRouter/>: <UnauthRouter/> }
+      { auth.bandera  ? <AuthRouter/>: <UnauthRouter/> }
   </div>
   );
 }
