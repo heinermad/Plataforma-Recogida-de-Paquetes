@@ -5,7 +5,7 @@ export function Nav() {
     const {auth, handleAuth } = useContext(AuthContext);
     const alm= JSON.parse(localStorage.getItem("tasks"));
     const handleLogout = ()=>{
-        handleAuth({bandera:false,usuario: null});
+        handleAuth({bandera:false, name: '', numDocRemit: '',nombreRemit:'', apellidosRemit:'',direccionRemit:''});
     }
 
     return (

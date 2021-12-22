@@ -9,7 +9,7 @@ function App() {
   const alm= JSON.parse(localStorage.getItem("tasks"));
   return (
     <div >   
-      {alm.bandera  ? <AuthRouter/>: <UnauthRouter/>}
+      { alm.bandera  ? <AuthRouter/>: <UnauthRouter/> }
   </div>
   );
 }
