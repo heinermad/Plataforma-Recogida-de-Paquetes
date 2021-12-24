@@ -45,7 +45,7 @@ export function ListarEnvios() {
       .then(datos => {
         setTablaMod(datos)
         setRegistros(datos)
-        console.log(Object.keys(datos).length);
+        
         setTotalElements(Object.keys(datos).length);
         setShowLoading(false);
       })
@@ -66,7 +66,7 @@ export function ListarEnvios() {
                                                            </select>
            }
       </td>
-      <td> <i class="fas fa-eye"></i> </td>
+      <td> <i className="fas fa-eye"></i> </td>
     </tr>
 
   ));

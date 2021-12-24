@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPaginate from "react-paginate";
 import "../../App.css";
 
@@ -45,7 +45,6 @@ export function AsignarRecogidas() {
       .then(datos => {
         setTablaMod(datos)
         setRegistros(datos)
-        console.log(Object.keys(datos).length);
         setTotalElements(Object.keys(datos).length);
         setShowLoading(false);
       })

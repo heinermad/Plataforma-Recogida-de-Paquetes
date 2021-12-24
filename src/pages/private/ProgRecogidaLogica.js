@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import MyToast from "./MyToast";
 import { render } from "@testing-library/react";
-
+import AuthContext from "../../context/AuthContext";
 
 export function ProgRecogida() {
-  
+  const { auth, handleAuth } = useContext(AuthContext);
 
-  const recovery1= localStorage.getItem("tasks");
- const recovery=JSON.parse(recovery1)
- 
   const delicado = [
     {
       id: 1,
@@ -25,11 +22,11 @@ export function ProgRecogida() {
     estado: "",
     fechaSalida: "",
     fechaEntrega: "",
-    numDocRemit: recovery.numDocRemit,
-    nombreRemit:recovery.nombreRemit,
-    apellidosRemit: recovery.apellidosRemit,
+    numDocRemit:"",
+    nombreRemit:"",
+    apellidosRemit: "",
     fechaRecogida: "",
-    direccionRemit: recovery.direccionRemit,
+    direccionRemit: "",
     barrioRemit: "",
     ciudadOrigen: "",
     departamentoRemit: "",
@@ -48,15 +45,18 @@ export function ProgRecogida() {
     departamentoDest: ""
   };
 
-  
-  const [data, setData] = useState(initialState1);
-  
+  const [initialState, setInitialState] = useState(initialState1);
+  const [data, setData] = useState([]);
+  const [authData, setAuthData] = useState([]);
 
   const onLimpiar = async (e) => {
-    setData(initialState1);
+    setData(initialState);
   };
 
-  
+  useEffect(() => {
+      
+  }, []);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const nuevaRecogida = {
@@ -67,7 +67,7 @@ export function ProgRecogida() {
       nombreRemit: data.nombreRemit,
       apellidosRemit: data.apellidosRemit,
       fechaRecogida: data.fechaRecogida,
-      direccionRemit: recovery.direccionRemit,
+      direccionRemit: data.direccionRemit,
       barrioRemit: data.barrioRemit,
       ciudadOrigen: data.ciudadOrigen,
       departamentoRemit: data.departamentoRemit,
@@ -85,18 +85,16 @@ export function ProgRecogida() {
       ciudadDest: data.ciudadDest,
       departamentoDest: data.departamentoDest,
     };
-  console.log('en el submit ', data);
-
     axios
       .post("https://plataforma-recogida-de-paquete.herokuapp.com/envios" , nuevaRecogida)
       .then((res) => {
         console.log(res);
-        console.log("La respuesta: " + res.data);
-        if (res.data === "si") {
-          setData(initialState1);
-          render(<MyToast exito="si" />);
+        console.log(res.data);
+        if (res.data === "Recogida programada con éxito") {
+          setData(initialState);
+          render(<MyToast exito="crear" />);
         } else {
-          render(<MyToast exito="no" mensajeError="No se pudo programar la recogida" />);
+          render(<MyToast exito="no" mensajeError={res.data.message} />);
         }
       })
       .catch((err) => {
@@ -113,8 +111,21 @@ export function ProgRecogida() {
     console.log(newData);
   }
 
- 
- 
+  function handleAuthData(e) {
+    const estado = {...initialState}
+
+    if(estado[e.target.id] === "numDocRemit"){
+      estado[e.target.id] = e.target.value;
+      setInitialState(estado);
+    }
+    
+   /*  e.preventDefault();
+    const newAuthData = { ...data };
+    newAuthData[e.target.id] = e.target.value;
+    setAuthData(newAuthData);
+    console.log(newAuthData); */
+  } 
+  console.log('EL Initial ', initialState);
 
   return (
     <div>
@@ -136,8 +147,9 @@ export function ProgRecogida() {
                       type="number"
                       name="numDocRemit"
                       id="numDocRemit"
-                      value={recovery.numDocRemit}
+                      value={auth.usuario.numDoc}
                       className="form-control"
+                      onLoad={(e) => handleAuthData(e)}
                       disabled
                     />
                   </div>
@@ -150,8 +162,8 @@ export function ProgRecogida() {
                       type="text"
                       name="nombreRemit"
                       id=""
-                      value={recovery.nombreRemit}
                       className="form-control"
+                      onChange={(e) => handleAuthData(e)}
                       disabled
                     />
                   </div>
@@ -164,8 +176,8 @@ export function ProgRecogida() {
                       type="text"
                       name="apellidosRemit"
                       id=""
-                      value={recovery.apellidosRemit}
                       className="form-control"
+                      onChange={(e) => handleAuthData(e)}
                       disabled
                     />
                   </div>
@@ -178,9 +190,9 @@ export function ProgRecogida() {
                       type="text"
                       name="direccionRemit"
                       id="direccionRemit"
-                      value={recovery.direccionRemit}
+                      value={auth.usuario.direccionRemit}
                       className="form-control"
-                      disabled
+                      onChange={(e) => handle(e)}
                     />
                   </div>
                 </div>

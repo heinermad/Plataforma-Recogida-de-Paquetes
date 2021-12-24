@@ -1,15 +1,26 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AuthRouter } from './routers/AuthRouter';
 import { UnauthRouter } from './routers/UnauthRouter';
 import AuthContext from './context/AuthContext';
 
 function App() {
-  const {auth} = useContext(AuthContext);
-  console.log(localStorage.getItem("tasks"));
-  const alm= JSON.parse(localStorage.getItem("tasks"));
+  let elemento=null;
+  const { auth } = useContext(AuthContext);
+   
+  
+
+  if (!auth ) 
+   {
+       elemento=<UnauthRouter/>;   
+  
+   }else {
+    elemento=<AuthRouter/>; 
+   }
+      
+   
   return (
     <div >   
-      {alm.bandera  ? <AuthRouter/>: <UnauthRouter/>}
+      { elemento }
   </div>
   );
 }

@@ -44,7 +44,7 @@ export function SeguirEnvio() {
           .then(datos => {
               setTablaMod(datos)
               setRegistros(datos)
-              console.log(Object.keys(datos).length);
+              
               setTotalElements(Object.keys(datos).length);
               setShowLoading(false);
           })
@@ -65,7 +65,7 @@ export function SeguirEnvio() {
               </select>
               }
           </td>
-          <td> <i class="fas fa-eye"></i> </td>
+          <td> <i className="fas fa-eye"></i> </td>
       </tr>
 
   ));
@@ -107,9 +107,9 @@ export function SeguirEnvio() {
                                   <textarea className="form-control "></textarea>
                               </div>
 
-                              <div class="container-fluid">
-                                  <div class="row">
-                                      <div class="col-sm-12 d-flex justify-content-center">
+                              <div className="container-fluid">
+                                  <div className="row">
+                                      <div className="col-sm-12 d-flex justify-content-center">
                                           <a href="none"><span className="text-center" >Ver detalles</span></a>
                                       </div>
                                   </div>

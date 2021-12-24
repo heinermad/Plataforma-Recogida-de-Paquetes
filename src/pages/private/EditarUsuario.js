@@ -1,61 +1,60 @@
-import { React, useState, useEffect  } from "react";
+import { React, useState} from "react";
 import axios from "axios";
 import MyToast from "./MyToast";
 
 import { render } from "@testing-library/react";
 import { useParams } from "react-router-dom";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 export function EditarUsuario() {
-  const generoArray=[{
-    id:1,
-    genero:"Masculino"},
+  
+  const generoArray = [
     {
-      id:2,
-      genero:"Femenino"}
-  ]
-  const rol=[{
-    id:1,
-    perfil:"Administador"},
-  {
-    id:2,
-    perfil:"Mensajero"},
-    
-  ]
+      id: 1,
+      genero: "Masculino",
+    },
+    {
+      id: 2,
+      genero: "Femenino",
+    },
+  ];
+  
+  const rol = [
+    {
+      id: 1,
+      perfil: "Administador",
+    },
+    {
+      id: 2,
+      perfil: "Mensajero",
+    },
+  ];
 
   const navigate = useNavigate();
   const { id } = useParams();
-  
-  const array=id.split(',');
-  
-  const dir=array[2].replace(')','#');
+  const array = id.split(",");
+
+  const dir = array[2].replace(")", "#");
   const onCancelar = async (e) => {
-    navigate('/usuario');
-  }
-  
-  /* const resFecha = array[3].split("-");
-  const reversedFecha = resFecha.reverse(); 
-  const FechaOb=reversedFecha.join('-'); */
-  
+    navigate("/usuario");
+  };
 
   const initialState = {
     numDoc: array[4],
     nombre: array[0],
     apellidos: array[1],
     direccion: dir,
-    fecha_nac: array[3] ,
+    fecha_nac: array[3],
     email: array[5],
     usuario: array[6],
-    clave:  array[7],
+    clave: array[7],
     genero: array[8],
-    rol:  array[9],
-  };  
-  
-  const [data, setData] = useState(initialState);
+    rol: array[9],
+  };
 
+  const [data, setData] = useState(initialState);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    
     const newUser = {
       numDoc: data.numDoc,
       nombre: data.nombre,
@@ -69,15 +68,14 @@ export function EditarUsuario() {
       rol: data.rol,
     };
     axios
-      .put("http://localhost:4000/users/"+ data.numDoc , newUser)
+      .put("https://plataforma-recogida-de-paquete.herokuapp.com/usuarios/" + data.numDoc, newUser)
       .then((res) => {
         console.log(res);
         console.log(res.data);
         if (res.data === "Usuario actualizado") {
           setData(initialState);
           render(<MyToast exito="actualizar" />);
-          
-          navigate('/usuario');
+          navigate("/usuario");
         } else {
           render(<MyToast exito="no" mensajeError={res.data.message} />);
         }
@@ -87,18 +85,15 @@ export function EditarUsuario() {
         /* render(<MyToast exito="no" mensajeError={res.data}/>) */
       });
   };
+
   function handle(e) {
     e.preventDefault();
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData)
+    console.log(newData);
   }
-  
 
-  
- 
- 
   return (
     <div>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
@@ -120,7 +115,7 @@ export function EditarUsuario() {
                       type="text"
                       name="nombre"
                       id="nombre"
-                      value={data.nombre} 
+                      value={data.nombre}
                       className="form-control"
                       onChange={(e) => handle(e)}
                     />
@@ -133,7 +128,7 @@ export function EditarUsuario() {
                       type="text"
                       name="apellidos"
                       id="apellidos"
-                      value={data.apellidos} 
+                      value={data.apellidos}
                       className="form-control"
                       onChange={(e) => handle(e)}
                     />
@@ -147,12 +142,11 @@ export function EditarUsuario() {
                       name="direccion"
                       id="direccion"
                       className="form-control"
-                      value={data.direccion} 
+                      value={data.direccion}
                       onChange={(e) => handle(e)}
                     />
                   </div>
                 </div>
-
                 <div className="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                   <div className="form-group">
                     <label htmlFor="fecha_nac">Fecha Nac.</label>
@@ -161,9 +155,8 @@ export function EditarUsuario() {
                       name="fecha_nac"
                       id="fecha_nac"
                       className="form-control"
-                      value={ data.fecha_nac}
+                      value={data.fecha_nac}
                       onChange={(e) => handle(e)}
-                     
                     />
                   </div>
                 </div>
@@ -222,43 +215,57 @@ export function EditarUsuario() {
                   </div>
                 </div>
                 <div className="col-lg-6 col-sm-6 col-md-6 col-xs-1">
-                    <div className="form-group">
-                          <label htmlFor="genero">Género</label>
-                        
-                           <select   name="genero" id="genero" onChange={(e) => handle(e)} className="form-control input-lg">
-                              <option value={ data.genero } >{ data.genero }</option>
-                               {
-                                generoArray.filter(item => item.genero !== data.genero)
-                                .map(item=>(
-                                 <option  key={item.id} value={item.genero} >{item.genero}</option>))
-                               }
-                            </select>
-                         
-                    </div>
+                  <div className="form-group">
+                    <label htmlFor="genero">Género</label>
+                    <select
+                      name="genero"
+                      id="genero"
+                      onChange={(e) => handle(e)}
+                      className="form-control input-lg"
+                    >
+                      <option value={data.genero}>{data.genero}</option>
+                      {generoArray
+                        .filter((item) => item.genero !== data.genero)
+                        .map((item) => (
+                          <option key={item.id} value={item.genero}>
+                            {item.genero}
+                          </option>
+                        ))}
+                    </select>
                   </div>
-                  <div className="col-lg-6 col-sm-6 col-md-6 col-xs-1">
-                    <div className="form-group">
-                          <label htmlFor="Rol">Rol</label>
-                        
-                           <select id='rol' onChange={(e) =>  handle(e)} className="form-control input-lg">
-                              <option >{data.rol}</option>
-                               {
-                                rol.filter(item=>item.perfil!==data.rol)
-                                .map((item)=>(
-                              <option  key={item.id} value={item.perfil} >{item.perfil}</option>
-                              ))
-                               }
-                            </select>    
-                    </div>
+                </div>
+                <div className="col-lg-6 col-sm-6 col-md-6 col-xs-1">
+                  <div className="form-group">
+                    <label htmlFor="Rol">Rol</label>
+
+                    <select
+                      id="rol"
+                      onChange={(e) => handle(e)}
+                      className="form-control input-lg"
+                    >
+                      <option>{data.rol}</option>
+                      {rol
+                        .filter((item) => item.perfil !== data.rol)
+                        .map((item) => (
+                          <option key={item.id} value={item.perfil}>
+                            {item.perfil}
+                          </option>
+                        ))}
+                    </select>
                   </div>
+                </div>
               </div>
             </fieldset>
             <div className="d-flex align-content-between flex-wrap p-2">
               <button type="submit" className="btn btn-success mr-2 ">
                 Editar
               </button>
-             
-              <button onClick={onCancelar} type="submit" className="btn btn-danger ">
+
+              <button
+                onClick={onCancelar}
+                type="submit"
+                className="btn btn-danger "
+              >
                 Cancelar
               </button>
             </div>

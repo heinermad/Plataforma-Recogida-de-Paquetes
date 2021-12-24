@@ -3,9 +3,12 @@ import AuthContext from '../context/AuthContext';
 
 export function Nav() {
     const {auth, handleAuth } = useContext(AuthContext);
-    const alm= JSON.parse(localStorage.getItem("tasks"));
+    /* const alm= JSON.parse(localStorage.getItem("tasks")); */
     const handleLogout = ()=>{
-        handleAuth({bandera:false, name:''});
+        
+        
+        handleAuth('')
+        
     }
 
     return (
@@ -181,7 +184,7 @@ export function Nav() {
                     <li className="nav-item dropdown no-arrow">
                         <a className="nav-link dropdown-toggle" href="none" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{alm.name}</span>
+                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">{auth.nombreRemit}</span>
                             <img className="img-profile rounded-circle" alt="..."
                                 src="img/undraw_profile.svg" />
                         </a>
